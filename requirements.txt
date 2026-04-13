@@ -1,0 +1,3 @@
+# CouncilGenius V8 - Cardinia Shire Council
+# Production dependencies
+# Minimal dependencies - uses Python standard library

@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CouncilGenius - Cardinia Shire Council</title>
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --primary-light: #43A047;
+            --secondary: #4CAF50;
+            --accent: #FF8F00;
+            --accent-dark: #F9A825;
+            --text-dark: #212121;
+            --text-light: #757575;
+            --border-light: #E0E0E0;
+            --bg-light: #E8F5E9;
+            --white: #FFFFFF;
+            --success: #4CAF50;
+            --error: #D32F2F;
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* Skip Link */
+        #skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 var(--radius-md) 0;
+        }
+
+        #skip-link:focus {
+            top: 0;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            border-bottom: 2px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-md) var(--spacing-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .header-brand h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .header-brand p {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background-color: var(--primary);
+            color: var(--white);
+            outline: 2px solid transparent;
+        }
+
+        nav a:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+            padding: var(--spacing-sm);
+        }
+
+        .menu-toggle:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-lg);
+            opacity: 0.95;
+        }
+
+        /* Quick Services Grid */
+        .services-section {
+            max-width: 1200px;
+            margin: var(--spacing-2xl) auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .services-section h3 {
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .service-btn {
+            background-color: var(--white);
+            border: 2px solid var(--border-light);
+            color: var(--text-dark);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .service-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
+        }
+
+        .service-btn:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Chat Section */
+        .chat-section {
+            max-width: 1200px;
+            margin: var(--spacing-2xl) auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .chat-container {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+        }
+
+        .chat-header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: var(--spacing-lg);
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .message {
+            display: flex;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .message.bot {
+            justify-content: flex-start;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        .message.bot .message-bubble {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            border-left: 4px solid var(--primary);
+        }
+
+        .message.user .message-bubble {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .message a {
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .message.bot a {
+            color: var(--primary);
+        }
+
+        .message.user a {
+            color: var(--accent-dark);
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: var(--spacing-xs);
+            align-items: center;
+            padding: var(--spacing-md) var(--spacing-lg);
+            background-color: var(--bg-light);
+            border-radius: var(--radius-lg);
+            width: fit-content;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-light);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                opacity: 0.5;
+            }
+            30% {
+                opacity: 1;
+            }
+        }
+
+        .feedback-widget {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+            font-size: 0.875rem;
+        }
+
+        .feedback-btn {
+            background: none;
+            border: 1px solid var(--border-light);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+            color: var(--text-light);
+        }
+
+        .feedback-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: var(--bg-light);
+        }
+
+        .feedback-btn:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 1px;
+        }
+
+        .feedback-btn[aria-pressed="true"] {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .suggestion-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .chip {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-light);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .chip:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .chip:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Chat Input */
+        .chat-input-area {
+            padding: var(--spacing-lg);
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .input-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-input-label {
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: none;
+            max-height: 100px;
+            color: var(--text-dark);
+            transition: border-color 0.2s ease;
+        }
+
+        .chat-input:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: -2px;
+            border-color: var(--primary);
+        }
+
+        .chat-input:disabled {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        .input-controls {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .voice-btn,
+        .send-btn {
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-light);
+            background-color: var(--white);
+            color: var(--text-dark);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .send-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .send-btn:hover:not(:disabled) {
+            background-color: var(--primary-light);
+            border-color: var(--primary-light);
+        }
+
+        .send-btn:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .send-btn:disabled {
+            background-color: var(--border-light);
+            color: var(--text-light);
+            border-color: var(--border-light);
+            cursor: not-allowed;
+        }
+
+        .voice-btn:hover {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .voice-btn:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 0.875rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-section a:hover,
+        .footer-section a:focus {
+            color: var(--accent);
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+        }
+
+        .acknowledgement {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .powered-by {
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: var(--spacing-lg);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--white);
+                border-bottom: 2px solid var(--primary);
+                padding: var(--spacing-md);
+                gap: var(--spacing-sm);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .header-container {
+                padding: var(--spacing-md);
+            }
+
+            .hero h2 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .service-btn {
+                padding: var(--spacing-md);
+                min-height: 100px;
+                font-size: 0.85rem;
+            }
+
+            .chat-container {
+                height: 450px;
+            }
+
+            .message-bubble {
+                max-width: 85%;
+            }
+
+            .chat-input-area {
+                flex-wrap: wrap;
+            }
+
+            .suggestion-chips {
+                gap: var(--spacing-xs);
+            }
+
+            .chip {
+                font-size: 0.8rem;
+                padding: var(--spacing-xs) var(--spacing-sm);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus visible for keyboard navigation */
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Contrast ratio validation */
+        a:not(.service-btn):not(.chip) {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        a:not(.service-btn):not(.chip):visited {
+            color: #1B5E20;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" id="skip-link">Skip to main content</a>
+
+    <header role="banner">
+        <div class="header-container">
+            <div class="header-brand">
+                <div>
+                    <h1>CouncilGenius</h1>
+                    <p>Cardinia Shire Council</p>
+                </div>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span aria-hidden="true">&#9776;</span>
+            </button>
+            <nav role="navigation" aria-label="Main navigation">
+                <ul>
+                    <li><a href="https://www.cardinia.vic.gov.au" target="_blank">Home</a></li>
+                    <li><a href="https://www.cardinia.vic.gov.au" target="_blank">Services</a></li>
+                    <li><a href="tel:1300787624">Contact</a></li>
+                    <li><a href="https://www.cardinia.vic.gov.au" target="_blank">Council Website</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" role="main">
+        <section class="hero" aria-label="Welcome banner">
+            <div class="hero-content">
+                <h2>Your guide to Cardinia Shire Council services</h2>
+                <p>CouncilGenius helps you find answers about bins, rates, planning, and more for Cardinia Shire.</p>
+            </div>
+        </section>
+
+        <section class="services-section" aria-label="Quick services">
+            <h3>Quick Services</h3>
+            <div class="services-grid">
+                <button class="service-btn" data-query="When are my bins collected and what goes in each bin?" aria-label="Check bin and recycling collection">Bins & Recycling</button>
+                <button class="service-btn" data-query="How do I pay my council rates online?" aria-label="Pay your rates online">Pay Rates</button>
+                <button class="service-btn" data-query="How do I apply for a planning permit and what are the fees?" aria-label="Apply for a planning permit">Planning Permits</button>
+                <button class="service-btn" data-query="How do I register my dog or cat and what are the registration fees?" aria-label="Register a pet">Pet Registration</button>
+                <button class="service-btn" data-query="What are the library locations and opening hours?" aria-label="Find local libraries">Libraries</button>
+                <button class="service-btn" data-query="What leisure centres and swimming pools does council manage?" aria-label="Access leisure centres">Leisure Centres</button>
+                <button class="service-btn" data-query="How do I book a hard waste collection?" aria-label="Book hard waste collection">Hard Waste</button>
+                <button class="service-btn" data-query="How do I report a pothole, broken footpath, or maintenance issue to council?" aria-label="Report an issue">Report an Issue</button>
+            </div>
+        </section>
+
+        <section class="chat-section" aria-label="Chat assistant">
+            <div class="chat-container" role="complementary" aria-label="CouncilGenius chat assistant">
+                <div class="chat-header">
+                    CouncilGenius Assistant
+                </div>
+
+                <div class="chat-messages" role="log" aria-label="Chat messages" aria-live="polite" aria-atomic="false">
+                    <div class="message bot">
+                        <div class="message-bubble">
+                            <p><strong>G'day! I'm your Cardinia Shire Council AI assistant.</strong></p>
+                            <p>I can help you with council services in a few ways:</p>
+                            <ul>
+                                <li><strong>Find information</strong> — Ask me about rates, bins, permits, pets, parks, or any council service and I'll search our knowledge base for the answer.</li>
+                                <li><strong>Get direct links</strong> — I'll point you to the exact page, form, or PDF you need on the council website — no more hunting through menus.</li>
+                                <li><strong>Understand processes</strong> — Planning a build? Registering a pet? I'll walk you through the steps, fees, and who to contact.</li>
+                            </ul>
+                            <p>Try a question below, or just type what you need.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <div class="input-wrapper">
+                        <label for="chat-input" class="chat-input-label">Type your message</label>
+                        <div class="suggestion-chips" id="suggestions" role="region" aria-label="Suggested questions">
+                            <button class="chip" data-query="When are my bins collected and what goes in each bin?" aria-label="Ask about bin collection days">When is my bin day?</button>
+                            <button class="chip" data-query="How do I pay my council rates online and what payment methods are accepted?" aria-label="Ask about paying rates">How do I pay my rates?</button>
+                            <button class="chip" data-query="How do I register my dog or cat and what are the registration fees?" aria-label="Ask about pet registration">How do I register my pet?</button>
+                            <button class="chip" data-query="What are the library locations and opening hours?" aria-label="Ask about libraries">Where are the libraries?</button>
+                            <button class="chip" data-query="Do I need a planning permit for building work and what are the fees?" aria-label="Ask about planning permits">Do I need a planning permit?</button>
+                        </div>
+                        <textarea
+                            id="chat-input"
+                            class="chat-input"
+                            placeholder="Type your question..."
+                            aria-label="Message input field"
+                            rows="1"
+                        ></textarea>
+                    </div>
+                    <div class="input-controls">
+                        <button class="voice-btn" id="voice-btn" aria-label="Start voice input" title="Speak your message">
+                            <span aria-hidden="true">🎤</span>
+                        </button>
+                        <button class="send-btn" id="send-btn" aria-label="Send message" disabled>
+                            Send
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Cardinia Shire Council</h4>
+                <p class="acknowledgement">Cardinia Shire Council is located on the lands of the Wurundjeri people of the Kulin Nation.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <a href="tel:1300787624">Phone: 1300 787 624</a>
+                <a href="https://www.cardinia.vic.gov.au" target="_blank">www.cardinia.vic.gov.au</a>
+                <p style="margin-top: var(--spacing-lg);">20 Siding Avenue, Officer VIC 3814<br>Monday to Friday, 9:00 AM to 4:30 PM</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Services</h4>
+                <a href="https://www.cardinia.vic.gov.au" target="_blank">Rates &amp; Property</a>
+                <a href="https://www.cardinia.vic.gov.au" target="_blank">Planning &amp; Building</a>
+                <a href="https://www.cardinia.vic.gov.au" target="_blank">Environment &amp; Sustainability</a>
+                <a href="https://www.cardinia.vic.gov.au" target="_blank">Community &amp; Support</a>
+            </div>
+
+            <div class="footer-section">
+                <h4>Information</h4>
+                <a href="https://www.cardinia.vic.gov.au" target="_blank">Privacy Policy</a>
+                <a href="https://www.cardinia.vic.gov.au" target="_blank">Accessibility Statement</a>
+                <a href="https://www.cardinia.vic.gov.au" target="_blank">Site Map</a>
+            </div>
+        </div>
+
+        <div class="footer-divider">
+            <p class="powered-by">CouncilGenius V8 powered by Cardinia Shire Council</p>
+        </div>
+    </footer>
+
+    <script>
+        // Session ID for analytics
+        const SESSION_ID = 'cg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        let conversationHistory = [];
+        let messageIdCounter = 0;
+
+        // DOM Elements
+        const chatMessages = document.querySelector('[role="log"]');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const voiceBtn = document.getElementById('voice-btn');
+        const suggestionsContainer = document.getElementById('suggestions');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+        const serviceButtons = document.querySelectorAll('.service-btn');
+
+        // Auto-focus on input when chat section is visible
+        chatInput.focus();
+
+        // Enable/disable send button based on input
+        chatInput.addEventListener('input', () => {
+            sendBtn.disabled = !chatInput.value.trim();
+            autoResizeInput();
+        });
+
+        // Handle message send on Enter (Shift+Enter for newline)
+        chatInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+            if (e.key === 'Escape') {
+                chatInput.value = '';
+                chatInput.blur();
+                sendBtn.disabled = true;
+            }
+        });
+
+        // Send button click
+        sendBtn.addEventListener('click', sendMessage);
+
+        // Menu toggle for mobile
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Service buttons click handlers
+        serviceButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                chatInput.value = btn.dataset.query || btn.textContent.trim();
+                sendBtn.disabled = false;
+                chatInput.focus();
+            });
+        });
+
+        // Suggestion chips
+        document.querySelectorAll('.chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                chatInput.value = chip.dataset.query || chip.textContent.trim();
+                sendBtn.disabled = false;
+                chatInput.focus();
+            });
+        });
+
+        // Voice input
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            recognition.language = 'en-AU';
+
+            voiceBtn.addEventListener('click', () => {
+                recognition.start();
+                voiceBtn.disabled = true;
+                voiceBtn.setAttribute('aria-label', 'Listening...');
+            });
+
+            recognition.addEventListener('result', (event) => {
+                let transcript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript;
+                }
+                chatInput.value = transcript;
+                sendBtn.disabled = !transcript.trim();
+                autoResizeInput();
+            });
+
+            recognition.addEventListener('end', () => {
+                voiceBtn.disabled = false;
+                voiceBtn.setAttribute('aria-label', 'Start voice input');
+            });
+
+            recognition.addEventListener('error', () => {
+                voiceBtn.disabled = false;
+                voiceBtn.setAttribute('aria-label', 'Start voice input');
+            });
+        } else {
+            voiceBtn.style.display = 'none';
+        }
+
+        // Auto-resize textarea
+        function autoResizeInput() {
+            chatInput.style.height = 'auto';
+            chatInput.style.height = Math.min(chatInput.scrollHeight, 100) + 'px';
+        }
+
+        // Send message function
+        async         function mdToHtml(text) {
+            // IMPORTANT: Do NOT escape < and > first — that was the V8 bug.
+            // Instead, sanitize by removing dangerous tags at the end.
+
+            // Split into lines for block-level processing
+            const lines = text.split('\n');
+            let html = '';
+            let inList = false;
+            let listType = '';  // 'ul' or 'ol'
+
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i];
+
+                // Headings: ## text → <h2>text</h2>
+                if (line.match(/^### (.+)/)) {
+                    if (inList) { html += `</${listType}>`; inList = false; }
+                    html += `<h3>${line.replace(/^### /, '')}</h3>`;
+                    continue;
+                }
+                if (line.match(/^## (.+)/)) {
+                    if (inList) { html += `</${listType}>`; inList = false; }
+                    html += `<h2>${line.replace(/^## /, '')}</h2>`;
+                    continue;
+                }
+
+                // Horizontal rule: --- or ***
+                if (line.match(/^(-{3,}|\*{3,})$/)) {
+                    if (inList) { html += `</${listType}>`; inList = false; }
+                    html += '<hr>';
+                    continue;
+                }
+
+                // Unordered list: - item or * item
+                if (line.match(/^[\-\*] (.+)/)) {
+                    if (!inList || listType !== 'ul') {
+                        if (inList) html += `</${listType}>`;
+                        html += '<ul>'; inList = true; listType = 'ul';
+                    }
+                    html += `<li>${processInline(line.replace(/^[\-\*] /, ''))}</li>`;
+                    continue;
+                }
+
+                // Ordered list: 1. item
+                if (line.match(/^\d+\. (.+)/)) {
+                    if (!inList || listType !== 'ol') {
+                        if (inList) html += `</${listType}>`;
+                        html += '<ol>'; inList = true; listType = 'ol';
+                    }
+                    html += `<li>${processInline(line.replace(/^\d+\. /, ''))}</li>`;
+                    continue;
+                }
+
+                // Close any open list
+                if (inList) { html += `</${listType}>`; inList = false; }
+
+                // Empty line = paragraph break
+                if (line.trim() === '') { continue; }
+
+                // Regular paragraph
+                html += `<p>${processInline(line)}</p>`;
+            }
+            if (inList) html += `</${listType}>`;
+
+            // Sanitize: only allow safe tags
+            html = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
+            html = html.replace(/<iframe[^>]*>[\s\S]*?<\/iframe>/gi, '');
+            html = html.replace(/\son\w+="[^"]*"/gi, '');  // strip event handlers
+
+            return html;
+        }
+
+        function processInline(text) {
+            // Bold: **text** → <strong>text</strong>
+            text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            // Italic: *text* → <em>text</em>
+            text = text.replace(/\*(.+?)\*/g, '<em>$1</em>');
+            // Markdown links: [text](url) → <a href="url">text</a>
+            text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, label, url) => {
+                if (url.startsWith('tel:')) return `<a href="${url}">${label}</a>`;
+                if (url.startsWith('mailto:')) return `<a href="${url}">${label}</a>`;
+                return `<a href="${url}" target="_blank" rel="noopener">${label}</a>`;
+            });
+            // Plain URLs (not already in a link)
+            text = text.replace(/(?<!")(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+            // Phone numbers: 1300/1800/04xx patterns → clickable tel: links
+            text = text.replace(/\b((?:1300|1800)\s?\d{3}\s?\d{3})\b/g, (m) => {
+                const digits = m.replace(/\s/g, '');
+                return `<a href="tel:${digits}">${m}</a>`;
+            });
+            return text;
+        }
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Hide suggestions on first message
+            if (suggestionsContainer.style.display !== 'none') {
+                suggestionsContainer.style.display = 'none';
+            }
+
+            // Add user message to display
+            addMessageToUI('user', message);
+
+            // Add to conversation history
+            conversationHistory.push({
+                role: 'user',
+                content: message,
+                timestamp: new Date().toISOString()
+            });
+
+            // Clear input
+            chatInput.value = '';
+            sendBtn.disabled = true;
+            chatInput.style.height = 'auto';
+
+            // Show typing indicator
+            const typingId = 'typing_' + messageIdCounter++;
+            addTypingIndicator();
+
+            try {
+                // Call API
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        messages: conversationHistory,
+                        sessionId: SESSION_ID
+                    })
+                });
+
+                // Remove typing indicator
+                const typingIndicator = document.querySelector('.typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const botMessage = data.response || 'I apologize, I could not process your request.';
+
+                // Add bot message
+                const botMessageId = 'msg_' + messageIdCounter++;
+                addMessageToUI('bot', botMessage, botMessageId);
+
+                // Add to conversation history
+                conversationHistory.push({
+                    role: 'assistant',
+                    content: botMessage,
+                    timestamp: new Date().toISOString()
+                });
+
+                // Add feedback widget
+                addFeedbackWidget(botMessageId, botMessage);
+
+            } catch (error) {
+                console.error('Error:', error);
+                const typingIndicator = document.querySelector('.typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+
+                // Show error message
+                const errorMsg = `I apologize for the technical difficulty. Please contact Cardinia Shire Council directly at <a href="tel:1300787624">1300 787 624</a> for immediate assistance.`;
+                addMessageToUI('bot', errorMsg);
+            }
+
+            // Re-focus on input
+            chatInput.focus();
+        }
+
+        // Add message to UI
+        function addMessageToUI(role, content, messageId = null) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${role}`;
+            if (messageId) {
+                msgDiv.id = messageId;
+            }
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.innerHTML = mdToHtml(content);
+            msgDiv.appendChild(bubble);
+
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Add typing indicator
+        function addTypingIndicator() {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message bot';
+
+            const indicator = document.createElement('div');
+            indicator.className = 'typing-indicator';
+            indicator.setAttribute('role', 'status');
+            indicator.setAttribute('aria-live', 'polite');
+            indicator.setAttribute('aria-label', 'Assistant is typing');
+
+            indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            msgDiv.appendChild(indicator);
+
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Add feedback widget
+        function addFeedbackWidget(messageId, messagePreview) {
+            const msgElement = document.getElementById(messageId);
+            if (!msgElement) return;
+
+            const widget = document.createElement('div');
+            widget.className = 'feedback-widget';
+            widget.setAttribute('role', 'region');
+            widget.setAttribute('aria-label', 'Feedback for this response');
+
+            const thumbsUp = document.createElement('button');
+            thumbsUp.className = 'feedback-btn';
+            thumbsUp.setAttribute('aria-label', 'This response was helpful');
+            thumbsUp.setAttribute('aria-pressed', 'false');
+            thumbsUp.textContent = '+ Helpful';
+
+            const thumbsDown = document.createElement('button');
+            thumbsDown.className = 'feedback-btn';
+            thumbsDown.setAttribute('aria-label', 'This response was not helpful');
+            thumbsDown.setAttribute('aria-pressed', 'false');
+            thumbsDown.textContent = '- Not helpful';
+
+            thumbsUp.addEventListener('click', () => {
+                const isPressed = thumbsUp.getAttribute('aria-pressed') === 'true';
+                thumbsUp.setAttribute('aria-pressed', !isPressed);
+                if (!isPressed) {
+                    thumbsDown.setAttribute('aria-pressed', 'false');
+                    sendFeedback(1, messagePreview);
+                }
+            });
+
+            thumbsDown.addEventListener('click', () => {
+                const isPressed = thumbsDown.getAttribute('aria-pressed') === 'true';
+                thumbsDown.setAttribute('aria-pressed', !isPressed);
+                if (!isPressed) {
+                    thumbsUp.setAttribute('aria-pressed', 'false');
+                    sendFeedback(0, messagePreview);
+                }
+            });
+
+            widget.appendChild(thumbsUp);
+            widget.appendChild(thumbsDown);
+            msgElement.querySelector('.message-bubble').appendChild(widget);
+        }
+
+        // Send feedback to server
+        async function sendFeedback(rating, messagePreview) {
+            try {
+                await fetch('/feedback', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        rating: rating,
+                        message: messagePreview.substring(0, 200),
+                        sessionId: SESSION_ID,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+            } catch (error) {
+                console.error('Feedback error:', error);
+            }
+        }
+
+        // Markdown to HTML converter
+        function mdToHtml(text) {
+            // Escape HTML
+            let html = text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+
+            // Convert markdown links to HTML
+            html = html.replace(/\[([^\]]+)\]\(((?:https?:\/\/|tel:|mailto:)[^\)]+)\)/g, (match, text, url) => {
+                const isExternal = url.startsWith('http');
+                const target = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+                return `<a href="${url}"${target}>${text}</a>`;
+            });
+
+            // Convert plain URLs
+            html = html.replace(/(?<![\[\(])(https?:\/\/[^\s\)]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+
+            // Convert phone numbers
+            html = html.replace(/(\d{4}\s\d{3}\s\d{3})/g, '<a href="tel:$1">$1</a>');
+
+            // Bold text
+            html = html.replace(/\*\*([^\*]+)\*\*/g, '<strong>$1</strong>');
+
+            // Italics
+            html = html.replace(/\*([^\*]+)\*/g, '<em>$1</em>');
+
+            // Line breaks
+            html = html.replace(/\n/g, '<br>');
+
+            return html;
+        }
+
+        // Focus trap in chat
+        const chatContainer = document.querySelector('.chat-container');
+        const focusableElements = chatContainer.querySelectorAll(
+            'button, [href], input, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+
+        if (focusableElements.length > 0) {
+            const firstFocusable = focusableElements[0];
+            const lastFocusable = focusableElements[focusableElements.length - 1];
+
+            chatContainer.addEventListener('keydown', (e) => {
+                if (e.key !== 'Tab') return;
+
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusable) {
+                        lastFocusable.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusable) {
+                        firstFocusable.focus();
+                        e.preventDefault();
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
